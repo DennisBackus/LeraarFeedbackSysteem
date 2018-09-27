@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Leerling {
+public class Leerling extends Account{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
