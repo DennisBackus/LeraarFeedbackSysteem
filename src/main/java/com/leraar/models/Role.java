@@ -1,6 +1,5 @@
 package com.leraar.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,15 +30,7 @@ public class Role {
 		this.name = name;
 	}
 
-	public Account getAcc() {
-		return acc;
-	}
 
-	public void setAcc(Account acc) {
-		this.acc = acc;
-	}
-
-	private Account acc; 
    
     
     

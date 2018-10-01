@@ -11,39 +11,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Leraar extends Account {
+public class Leraar extends Persoon {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private long ID;
-	private String name;
-	@OneToOne
-	private Account account;
 
 	@ManyToMany
 	private List<Klas> klassen;
 	@OneToMany
 	private List <Feedback> feedback;
 
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public long getID() {
-		return ID;
-	}
-	public void setID(long iD) {
-		ID = iD;
-	}
-	public Account getAccount() {
-		return account;
-	}
-	public void setAccount(Account account) {
-		this.account = account;
-	}
+	
 	public List<Klas> getKlassen() {
 		return klassen;
 	}
