@@ -3,17 +3,15 @@ package com.leraar.models;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 
 @Entity
 public class Leraar extends Persoon {
 
-
+	private String specialisatie;
+	
 	@ManyToMany
 	private List<Klas> klassen;
 	@OneToMany
@@ -32,5 +30,10 @@ public class Leraar extends Persoon {
 	public void setFeedback(List<Feedback> feedback) {
 		this.feedback = feedback;
 	}
-
+	public String getSpecialisatie() {
+		return specialisatie;
+	}
+	public void setSpecialisatie(String specialisatie) {
+		this.specialisatie = specialisatie;
+	}
 }
