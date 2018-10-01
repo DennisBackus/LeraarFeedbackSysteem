@@ -3,6 +3,7 @@ package com.leraar.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import com.leraar.dao.IFeedbackDAO;
@@ -10,10 +11,12 @@ import com.leraar.models.Feedback;
 import com.leraar.models.Leerling;
 import com.leraar.models.Leraar;
 
+
+@Service
 public class FeedbackService implements IFeedbackService {
 
 	@Autowired
-	IFeedbackDAO iFeedbackDAO;
+	private IFeedbackDAO iFeedbackDAO;
 
 	@Override
 	public List<Feedback> findByLeraar(Leraar leraar) {

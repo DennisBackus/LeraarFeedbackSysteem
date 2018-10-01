@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Leerling extends Account{
@@ -14,10 +18,18 @@ public class Leerling extends Account{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ID;
 	private String name;
-	private List<Leraar> leraar;
+	
+	
+	@OneToMany
 	private List<Feedback> feedback;
+	
+	@ManyToOne
 	private Klas klas;
+	
+	@OneToOne
 	private Account account;
+	
+	
 	public Account getAccount() {
 		return account;
 	}
@@ -36,12 +48,7 @@ public class Leerling extends Account{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Leraar> getLeraar() {
-		return leraar;
-	}
-	public void setLeraar(List<Leraar> leraar) {
-		this.leraar = leraar;
-	}
+
 	public List<Feedback> getFeedback() {
 		return feedback;
 	}
