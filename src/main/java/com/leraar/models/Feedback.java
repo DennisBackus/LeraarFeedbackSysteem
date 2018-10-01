@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Feedback {
@@ -12,8 +13,13 @@ public class Feedback {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private long ID;
 	private String feedbackInhoud;
+	
+	@ManyToOne
 	private Leraar leraar;
+	
+	@ManyToOne
 	private Leerling leerling;
+	
 	public long getID() {
 		return ID;
 	}
