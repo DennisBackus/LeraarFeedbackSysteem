@@ -3,6 +3,7 @@ package com.leraar.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,14 +23,14 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-    //@Secured({"ROLE_ADMIN", "ROLE_USER"})
+   // @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/user", method = RequestMethod.GET)
     public List listUser(){
         return userService.findAll();
     }
 
-    //@Secured("ROLE_USER")
+  //  @Secured("ROLE_USER")
     //@PreAuthorize("hasRole('USER')")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)

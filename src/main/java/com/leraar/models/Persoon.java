@@ -4,29 +4,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Administrator extends Account {
-
+public class Persoon {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ID;
+	private String name;
+	@OneToOne
+	private User user;
 	
-	private String naam;
-
 	public long getID() {
 		return ID;
 	}
-
 	public void setID(long iD) {
 		ID = iD;
 	}
-
-	public String getNaam() {
-		return naam;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setNaam(String naam) {
-		this.naam = naam;
-	}
+
+
 }

@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,13 +27,23 @@ public class User {
     @Column
     @JsonIgnore
     private String password;
- 
+    @OneToOne
+    private Persoon persoon;
+	private Set<Role> roles;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Persoon getPersoon() {
+		return persoon;
+	}
+
+	public void setPersoon(Persoon persoon) {
+		this.persoon = persoon;
+	}
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLES", joinColumns = {
             @JoinColumn(name = "USER_ID") }, inverseJoinColumns = {
             @JoinColumn(name = "ROLE_ID") })
-    private Set<Role> roles;
+    
 
     public long getId() {
 		return id;
