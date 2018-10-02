@@ -14,6 +14,9 @@ public class Klas {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY) 
 private long ID;
+
+private String name;
+
 @ManyToOne
 private Leraar leraar;
 
@@ -37,6 +40,12 @@ public List<Leerling> getLeerlingen() {
 }
 public void setLeerlingen(List<Leerling> leerlingen) {
 	this.leerlingen = leerlingen;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
 }
 
 
