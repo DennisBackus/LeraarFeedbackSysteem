@@ -6,14 +6,14 @@ import javax.persistence.*;
 public class Persoon {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long ID;
+	private long id;
 	private String name;
 	
 	public long getID() {
-		return ID;
+		return id;
 	}
-	public void setID(long iD) {
-		ID = iD;
+	public void setID(long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
