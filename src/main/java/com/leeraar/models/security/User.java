@@ -25,7 +25,6 @@ public class User {
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
 //    @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
     @Id
-    @Column()
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
@@ -41,12 +40,10 @@ public class User {
 
     @Column(length = 50)
     @NotNull
-    @Size(min = 4, max = 50)
     private String firstname;
 
     @Column(length = 50)
     @NotNull
-    @Size(min = 4, max = 50)
     private String lastname;
 
     @NotNull
