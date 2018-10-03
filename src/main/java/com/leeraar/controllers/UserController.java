@@ -1,16 +1,20 @@
 package com.leeraar.controllers;
 
+import com.leeraar.dto.UserDto;
+import com.leeraar.models.Feedback;
 import com.leeraar.models.security.Authority;
 import com.leeraar.models.security.JwtAuthenticationRequest;
 import com.leeraar.models.security.User;
 import com.leeraar.repositories.UserRepository;
 import com.leeraar.services.security.AuthorityService;
 import com.leeraar.services.security.JwtTokenUtilService;
+import com.leeraar.services.security.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,20 +31,19 @@ public class UserController {
     private AuthorityService authorityService;
 
 
-//    @Autowired
-//    private Jwt authorityService;
+    @Autowired
+    private JwtUserDetailsService jwtUserDetailsService;
     
 
     @PostMapping(value = "register/{roleId}")
-    public ResponseEntity<?> register(@RequestBody User user, @PathVariable Long roleId) {
+    public ResponseEntity<?> register(@RequestBody UserDto userDto, @PathVariable Long roleId) {
 
         Optional<Authority> optionalAuthority = authorityService.findById(roleId);
 
         if (optionalAuthority.isPresent()) {
 
-
-
-
+            jwtUserDetailsService.save(userDto);
+            return new ResponseEntity<>("User is registered!",HttpStatus.OK);
         }
 
 
