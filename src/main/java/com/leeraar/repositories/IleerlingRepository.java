@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.leeraar.models.Klas;
 import com.leeraar.models.Leerling;
 
-public interface IleerlingRepository extends CrudRepository<Leerling, Long>{
+public interface IleerlingRepository extends CrudRepository<Leerling, Long> {
 	
 	
 	 List<Leerling> findAll();
