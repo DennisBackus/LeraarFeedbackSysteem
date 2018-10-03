@@ -1,46 +1,51 @@
 package com.leeraar.models;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.List;
 
 @Entity
 public class Klas {
+	
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private long ID;
+private long id;
 
 private String name;
 
-@ManyToOne
-private Leraar leraar;
+@ManyToMany
+@JsonManagedReference
+private List<Persoon> persoon;
 
+public long getId() {
+	return id;
+}
 
-@OneToMany
-private List<Leerling> leerlingen;
-public long getID() {
-	return ID;
+public void setId(long id) {
+	this.id = id;
 }
-public void setID(long iD) {
-	ID = iD;
-}
-public Leraar getLeraar() {
-	return leraar;
-}
-public void setLeraar(Leraar leraar) {
-	this.leraar = leraar;
-}
-public List<Leerling> getLeerlingen() {
-	return leerlingen;
-}
-public void setLeerlingen(List<Leerling> leerlingen) {
-	this.leerlingen = leerlingen;
-}
+
 public String getName() {
 	return name;
 }
+
 public void setName(String name) {
 	this.name = name;
 }
+
+public List<Persoon> getPersoon() {
+	return persoon;
+}
+
+public void setPersoon(List<Persoon> persoon) {
+	this.persoon = persoon;
+}
+
+
+
+
 
 
 

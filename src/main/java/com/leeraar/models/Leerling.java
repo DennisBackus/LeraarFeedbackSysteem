@@ -12,8 +12,6 @@ public class Leerling extends Persoon{
 	@OneToMany
 	private List<Feedback> feedback;
 	
-	@ManyToOne
-	private Klas klas;
 	
 
 
@@ -24,11 +22,6 @@ public class Leerling extends Persoon{
 	public void setFeedback(List<Feedback> feedback) {
 		this.feedback = feedback;
 	}
-	public Klas getKlas() {
-		return klas;
-	}
-	public void setKlas(Klas klas) {
-		this.klas = klas;
-	}
+	
 	
 }

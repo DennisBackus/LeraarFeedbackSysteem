@@ -11,18 +11,12 @@ public class Leraar extends Persoon {
 
 	private String specialisatie;
 	
-	@ManyToMany
-	private List<Klas> klassen;
+	
 	@OneToMany
 	private List <Feedback> feedback;
 
 	
-	public List<Klas> getKlassen() {
-		return klassen;
-	}
-	public void setKlassen(List<Klas> klassen) {
-		this.klassen = klassen;
-	}
+	
 	public List<Feedback> getFeedback() {
 		return feedback;
 	}
