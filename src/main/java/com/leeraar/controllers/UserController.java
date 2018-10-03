@@ -26,8 +26,8 @@ public class UserController {
     @Autowired
     private AuthorityService authorityService;
 
-    @Autowired
-    private Jwt authorityService;
+//    @Autowired
+//    private Jwt authorityService;
 
 
     @PostMapping(value = "register/{roleId}")
