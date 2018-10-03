@@ -1,7 +1,10 @@
 package com.leeraar.controllers;
 
+import com.leeraar.models.security.Authority;
+import com.leeraar.models.security.JwtAuthenticationRequest;
 import com.leeraar.models.security.User;
 import com.leeraar.repositories.UserRepository;
+import com.leeraar.services.security.AuthorityService;
 import com.leeraar.services.security.JwtTokenUtilService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -20,25 +24,46 @@ public class UserController {
     private String tokenHeader;
 
     @Autowired
-    private JwtTokenUtilService jwtTokenUtil;
+    private AuthorityService authorityService;
 
     @Autowired
-    private UserRepository userRepository;
+    private Jwt authorityService;
 
-    @RequestMapping(value = "active", method = RequestMethod.GET)
-    public ResponseEntity<?> updateActiveUserState(HttpServletRequest request) {
-        String authToken = request.getHeader(tokenHeader);
-        final String token = authToken.substring(7);
-        String username = jwtTokenUtil.getUsernameFromToken(token);
 
-        User user = userRepository.findByUsername(username);
+    @PostMapping(value = "register/{roleId}")
+    public ResponseEntity<?> register(@RequestBody User user, @PathVariable Long roleId) {
 
-        user.setLastActiveDateTime(new Date());
+        Optional<Authority> optionalAuthority = authorityService.findById(roleId);
 
-        userRepository.save(user);
+        if (optionalAuthority.isPresent()) {
 
-        return new ResponseEntity<>(HttpStatus.OK);
+
+
+
+        }
+
+
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+
+
+
+//    @RequestMapping(value = "active", method = RequestMethod.GET)
+//    public ResponseEntity<?> updateActiveUserState(HttpServletRequest request) {
+//        String authToken = request.getHeader(tokenHeader);
+//        String token = authToken.substring(7);
+//        String username = jwtTokenUtil.getUsernameFromToken(token);
+//
+//        User user = userRepository.findByUsername(username);
+//
+//        user.setLastActiveDateTime(new Date());
+//
+//        userRepository.save(user);
+//
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
+
+
 
 //    @RequestMapping("/error")
 //    public String error() {

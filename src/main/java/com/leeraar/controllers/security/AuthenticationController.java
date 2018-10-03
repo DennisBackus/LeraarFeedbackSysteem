@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class AuthenticationRestController {
+public class AuthenticationController {
 
     @Value("${jwt.header}")
     private String tokenHeader;
