@@ -26,9 +26,10 @@ public class UserController {
     @Autowired
     private AuthorityService authorityService;
 
+
 //    @Autowired
 //    private Jwt authorityService;
-
+    
 
     @PostMapping(value = "register/{roleId}")
     public ResponseEntity<?> register(@RequestBody User user, @PathVariable Long roleId) {
