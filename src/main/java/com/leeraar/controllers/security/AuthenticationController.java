@@ -48,8 +48,8 @@ public class AuthenticationController {
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
         // Reload password post-security so we can generate the token
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-        final String token = jwtTokenUtil.generateToken(userDetails);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+        String token = jwtTokenUtil.generateToken(userDetails);
 
         // Return the token
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
