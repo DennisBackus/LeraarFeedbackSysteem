@@ -5,18 +5,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leeraar.services.IKlassService;
-
+import com.leeraar.services.IPersoonService;
 
 @RestController
-public class KlassController {
+public class PersoonController {
 
 	@Autowired
-	private IKlassService iKlassService;
+	private IPersoonService ipersonService;
 
-	@GetMapping("/feedback/danny/create/{naamKlas}")
-	public void createFeedback(@PathVariable String naamKlas) {
-		 this.iKlassService.createKlass(naamKlas);
+	@GetMapping("/feedback/danny/persoon/{leraarleerling}")
+	public void createFeedback(@PathVariable String leraarleerling) {
+		 this.ipersonService.createPerson(leraarleerling);
 	}
+	
 	
 }

@@ -7,7 +7,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.leeraar.models.Feedback;
 import com.leeraar.models.Klas;
+import com.leeraar.models.Leerling;
+import com.leeraar.models.Leraar;
 import com.leeraar.models.Persoon;
 import com.leeraar.repositories.IKlasRepository;
 import com.leeraar.repositories.IPersonRepository;
@@ -20,6 +23,9 @@ public class PersoonService implements IPersoonService {
  	
  	@Autowired
  	IKlasRepository iKlasdao;
+ 	
+ 	@Autowired
+	IFeedbackService ifeedbackService;
  	
  	@Override
 	public List<Persoon> findByName(String name) {
@@ -47,5 +53,34 @@ public class PersoonService implements IPersoonService {
 		
 		return dePersonen;
 	}
+	
+	@Override
+	public void createFeedBack(Feedback feedback) {
+		// TODO Auto-generated method stub
+		
+		ifeedbackService.create(feedback);
+		
+		
+	}
+	
+	public void createPerson(String leraarleerling) {
+		System.out.println("de string is: " + leraarleerling);
+		Persoon nieuwPersoon = new Persoon();
+		if (leraarleerling.equals("leerling")) {
+			nieuwPersoon = new Leerling();
+			nieuwPersoon.setName("leerlingoooo" );
+			List <Klas> deklas = iKlasdao.findAll();
+			nieuwPersoon.setKlas(deklas);
+		} else {
+			nieuwPersoon = new Leraar();
+			nieuwPersoon.setName("leraarooo" );
+		}
+		
+		this.iPersondao.save(nieuwPersoon);
+		
+	}
+	
+	
+	
 
 }
