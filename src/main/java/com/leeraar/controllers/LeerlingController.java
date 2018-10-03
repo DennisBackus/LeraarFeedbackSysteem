@@ -6,17 +6,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leeraar.models.Feedback;
-import com.leeraar.services.IleerlingService;
+import com.leeraar.services.IPersoonService;
+
 
 @RestController
 public class LeerlingController {
 
 	@Autowired
-	private IleerlingService iLeerlingService;
+	private IPersoonService ipersonService;
 
 	@PostMapping("/feedback/danny/create")
 	public void createFeedback(@RequestBody Feedback feedback) {
-		 this.iLeerlingService.createFeedBack(feedback);
+		 this.ipersonService.createFeedBack(feedback);
 	}
 
 }
