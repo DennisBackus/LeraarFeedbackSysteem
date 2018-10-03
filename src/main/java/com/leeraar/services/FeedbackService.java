@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @Service
-public class FeedbackService {
+public class FeedbackService implements IFeedbackService{
 
 	@Autowired
 	private FeedbackRepository feedbackRepository;
