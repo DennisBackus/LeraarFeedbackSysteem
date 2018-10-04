@@ -40,8 +40,9 @@ public class UserController {
 
         Optional<Authority> optionalAuthority = authorityService.findById(roleId);
 
-        if (optionalAuthority.isPresent()) {
+        if (optionalAuthority.isPresent() && userDto != null) {
 
+            userDto.setAuthority(optionalAuthority.get());
             jwtUserDetailsService.save(userDto);
             return new ResponseEntity<>("User is registered!",HttpStatus.OK);
         }

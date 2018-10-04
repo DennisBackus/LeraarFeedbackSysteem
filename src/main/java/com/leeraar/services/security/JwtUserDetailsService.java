@@ -2,7 +2,6 @@ package com.leeraar.services.security;
 
 import com.leeraar.dto.UserDto;
 import com.leeraar.factories.JwtUserFactory;
-import com.leeraar.models.Feedback;
 import com.leeraar.models.security.User;
 import com.leeraar.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Service
@@ -45,6 +42,7 @@ public class JwtUserDetailsService implements UserDetailsService {
         user.setLastPasswordResetDate(new Date());
         user.setFirstname("");
         user.setLastname("");
+        user.setAuthority(userDto.getAuthority());
 
         this.userRepository.save(user);
     }
