@@ -25,45 +25,34 @@ public class User {
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
 //    @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
     @Id
-    @Column(name = "ID")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "USERNAME", length = 50, unique = true)
+    @Column(length = 50, unique = true)
     @NotNull
     @Size(min = 4, max = 50)
     private String username;
 
-    @Column(name = "PASSWORD", length = 100)
+    @Column(length = 100)
     @NotNull
     @Size(min = 4, max = 100)
     private String password;
 
-    @Column(name = "FIRSTNAME", length = 50)
+    @Column(length = 50)
     @NotNull
-    @Size(min = 4, max = 50)
     private String firstname;
 
-    @Column(name = "LASTNAME", length = 50)
+    @Column(length = 50)
     @NotNull
-    @Size(min = 4, max = 50)
     private String lastname;
 
-    @Column(name = "EMAIL", length = 50)
-    @NotNull
-    @Size(min = 4, max = 50)
-    private String email;
-
-    @Column(name = "ENABLED")
     @NotNull
     private Boolean enabled;
 
-    @Column(name = "LASTPASSWORDRESETDATE")
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
     private Date lastPasswordResetDate;
 
-    @Column(name = "LASTACTIVEDATETIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastActiveDateTime;
 
@@ -112,14 +101,6 @@ public class User {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public Boolean getEnabled() {
